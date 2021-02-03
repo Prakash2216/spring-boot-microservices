@@ -1,5 +1,7 @@
 package io.javalearning.microservice.springbootconfig.resources;
 
+import io.javalearning.microservice.springbootconfig.config.DBSettings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +18,12 @@ public class GreetingsController {
     @Value("${my.list}")
     private List<String> listValues;
 
-    @Value("#{${dbValues}}")
-    private Map<String, String> values;
+    @Autowired
+    private DBSettings dbSettings;
 
     @GetMapping("/greeting")
     private String greetings()
     {
-        return greeting+listValues+values;
+        return dbSettings.getConnection()+dbSettings.getHost()+dbSettings.getPort();
     }
 }
