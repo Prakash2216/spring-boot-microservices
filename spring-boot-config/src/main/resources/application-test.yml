@@ -1,0 +1,13 @@
+app:
+  name: My App
+  description: Welcome to ${app.name}
+my:
+  greetings: Hello Greetings
+  list: Hello, this, is, comma, seperated, list
+
+db:
+  connection: "Test-connection-string"
+  host: 8769
+  port: 2400
+
+management.endpoints.web.exposure.include: "*"
