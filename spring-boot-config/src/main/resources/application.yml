@@ -4,12 +4,11 @@ app:
 my:
  greetings: Hello Greetings
  list: Hello, this, is, comma, seperated, list
-
 db:
- connection: "{connectionstring: 'http://___', username: 'foo', password: 'password'}"
- host: 8769
- port: 1200
-
+  connection: "Connection-string"
+  host: 8769
+  port: 2400
 management.endpoints.web.exposure.include: "*"
 
-spring.profiles.active: test
+spring.config.import: "optional:configserver:http://localhost:8888"
+spring.application.name: spring-boot-config
